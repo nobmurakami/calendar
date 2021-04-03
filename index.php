@@ -6,15 +6,17 @@ if (isset($_GET['month'])) {
 } else {
   $month = (new DateTime())->format('Y-m');
 }
+
 // 月初の日付を取得する
 $first_day = new DateTime('first day of ' . $month);
-// 月初の曜日を0（日曜）から6（土曜）の数値で取得
+
+// 月初の曜日を取得し、カレンダー1行目の空白のセルの数を求める
 $day = $first_day->format('w');
-// 曜日の数値から、第1週の空白の数を求める
 $space_count = $day + 1 - 1;
-// 日付の配列を作成する
+
+// カレンダーのセルの配列を作成する
 $days = array();
-// 配列の先頭に空白を追加する
+// カレンダーの配列の先頭に空白を追加する
 for ($i = 1; $i <= $space_count; $i++) {
   $days[] = "";
 }
