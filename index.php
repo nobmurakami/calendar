@@ -7,16 +7,14 @@ if (isset($_GET['month'])) {
   $month = (new DateTime())->format('Y-m');
 }
 
-// 月初の日付を取得する
+// 月初の日付を取得し、カレンダー、タイトル、リンクを生成する基準日とする
 $first_day = new DateTime('first day of ' . $month);
-
-// 月初の曜日を取得し、カレンダー1行目の空白のセルの数を求める
-$day = $first_day->format('w');
-$space_count = $day + 1 - 1;
 
 // カレンダーのセルの配列を作成する
 $days = array();
-// カレンダーの配列の先頭に空白を追加する
+// 月初の曜日を取得し、カレンダー1行目の空白のセルを配列に追加
+$day = $first_day->format('w');
+$space_count = $day + 1 - 1;
 for ($i = 1; $i <= $space_count; $i++) {
   $days[] = "";
 }
@@ -36,15 +34,14 @@ if (count($days) < $cell_count) {
     $days[] = "";
   }
 }
-// 配列の要素を先頭から7個ずつ取り出して新たな配列weekを作成し、それを配列weeksに入れていく
+
+// 二次元配列の生成
+// 配列$daysの要素を先頭から7個ずつ取り出して新たな配列を作成し、それを配列$weeksに入れていく
 $weeks = array();
 $week_count = ceil(count($days) / 7);
 for ($i = 1; $i <= $week_count; $i++) {
   $week = array();
   for ($j = 1; $j <= 7; $j++) {
-    if (count($days) <= 0) {
-      break;
-    }
     $week[] = array_shift($days);
   }
   $weeks[] = $week;
@@ -97,11 +94,6 @@ $next_month = (new DateTime($month . '-01'))->add($interval)->format('Y-m');
         <?php endforeach ?>
       </table>
     </div>
-
-    
-
-    
-
   </div>
 </body>
 </html>
