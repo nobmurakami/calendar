@@ -6,7 +6,7 @@ require_once('calendar.php');
 <head>
   <meta charset="utf-8">
   <title>カレンダー</title>
-  <link rel="stylesheet" type="text/css" href="destyle.css">
+  <link rel="stylesheet" type="text/css" href="reset.css">
   <link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 <body>
