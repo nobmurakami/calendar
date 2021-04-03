@@ -1,6 +1,6 @@
 <?php
 // 今日
-$today = new DateTime();
+$today = new DateTime('now', new DateTimeZone('Asia/Tokyo'));
 
 // 表示する月を定義
 // パラメータがあればパラメータの月に、なければ今月にする
