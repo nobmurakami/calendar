@@ -15,7 +15,7 @@ require_once('calendar.php');
       <div class="title">
         <?php echo $first_day->format('Y年 n月') ?>
       </div>
-      
+
       <!-- 前後の月へのリンク -->
       <div class="link">
         <a href="index.php?month=<?php echo $last_month ?>">＜</a>
@@ -38,7 +38,11 @@ require_once('calendar.php');
         <?php foreach ($weeks as $week): ?>
           <tr>
             <?php foreach ($week as $day): ?>
-              <td><?php echo $day ?>
+              <?php if ($month == $today->format('Y-m') && $day == $today->format('j')): ?> 
+                <td class="today"><?php echo $day ?></td>
+              <?php else: ?>
+                <td><?php echo $day ?></td>
+              <?php endif ?>
             <?php endforeach ?>
           </tr>
         <?php endforeach ?>

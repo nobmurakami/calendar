@@ -1,10 +1,13 @@
 <?php
+// 今日
+$today = new DateTime();
+
 // 表示する月を定義
 // パラメータがあればパラメータの月に、なければ今月にする
 if (isset($_GET['month'])) {
   $month = $_GET['month'];
 } else {
-  $month = (new DateTime())->format('Y-m');
+  $month = $today->format('Y-m');
 }
 
 // 月初の日付を取得し、カレンダー、タイトル、リンクを生成する基準日とする
